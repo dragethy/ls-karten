@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Tractor, LogIn, LogOut, User } from "lucide-react";
+import { Menu, X, Tractor, LogIn, LogOut, User, Shield } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
+import { useAdmin } from "@/hooks/use-admin";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { user, loading, signOut } = useAuth();
+  const { istAdmin } = useAdmin();
 
   return (
     <nav className="sticky top-0 z-50 border-b border-green-200 bg-white/90 backdrop-blur-xl shadow-sm">
@@ -53,6 +55,14 @@ export function Navbar() {
               <>
                 {user ? (
                   <div className="hidden md:flex items-center gap-2">
+                    {istAdmin && (
+                      <Link href="/admin">
+                        <Button variant="outline" size="sm" className="border-green-300 text-green-700">
+                          <Shield className="h-4 w-4" />
+                          Admin
+                        </Button>
+                      </Link>
+                    )}
                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 text-sm text-green-700 border border-green-200">
                       <User className="h-4 w-4" />
                       <span>{user.email?.split("@")[0]}</span>

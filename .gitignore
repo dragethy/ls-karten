@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# map mod files (large, only used by agent)
+/maps/
+
 # vercel
 .vercel
 

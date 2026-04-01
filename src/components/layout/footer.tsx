@@ -16,7 +16,7 @@ export function Footer() {
               <span className="font-bold text-green-900">{SITE_NAME}</span>
             </div>
             <p className="text-sm text-green-700/60">
-              Die beste Sammlung von Karten fuer den Landwirtschafts Simulator 25.
+              Die beste Sammlung von Karten für den Landwirtschafts Simulator 25.
             </p>
           </div>
 

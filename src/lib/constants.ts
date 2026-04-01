@@ -1,6 +1,6 @@
 export const SITE_NAME = "LS-Karten.de";
 export const SITE_DESCRIPTION =
-  "Die beste Sammlung von Karten fuer den Landwirtschafts Simulator 25. Entdecke detaillierte Karteninfos, interaktive Minimaps und Bewertungen.";
+  "Die beste Sammlung von Karten für den Landwirtschafts Simulator 25. Entdecke detaillierte Karteninfos, interaktive Minimaps und Bewertungen.";
 
 export const MAP_SIZES = ["1x", "2x", "4x", "8x", "16x"] as const;
 
@@ -12,7 +12,7 @@ export const FRUECHTE = [
   "Sonnenblumen",
   "Mais",
   "Kartoffeln",
-  "Zuckerrueben",
+  "Zuckerrüben",
   "Sojabohnen",
   "Baumwolle",
   "Sorghum",
@@ -34,7 +34,7 @@ export const POI_ICONS: Record<string, { label: string; color: string }> = {
   produktion: { label: "Produktion", color: "#f59e0b" },
   tankstelle: { label: "Tankstelle", color: "#ef4444" },
   werkstatt: { label: "Werkstatt", color: "#8b5cf6" },
-  haendler: { label: "Haendler", color: "#06b6d4" },
+  haendler: { label: "Händler", color: "#06b6d4" },
   sonstiges: { label: "Sonstiges", color: "#6b7280" },
 };
 

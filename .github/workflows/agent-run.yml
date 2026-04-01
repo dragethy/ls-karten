@@ -1,0 +1,39 @@
+name: Map Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Mod-Detail-URL (z.B. farming-simulator.com/mod.php?mod_id=...)"
+        required: true
+        type: string
+      slug:
+        description: "URL-Slug für die Karte (z.B. kastilien-und-leon)"
+        required: true
+        type: string
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pillow installieren
+        run: pip install Pillow
+
+      - run: npm ci
+
+      - name: Agent ausführen
+        run: npm run agent -- --url "${{ inputs.url }}" --slug "${{ inputs.slug }}"
+        env:
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

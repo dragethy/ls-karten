@@ -1,0 +1,46 @@
+name: Crawl Check + Discovery
+
+on:
+  schedule:
+    - cron: "0 8 * * 1" # Montag 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Crawl - Updates prüfen
+        id: crawl
+        continue-on-error: true
+        run: npm run crawl:json > crawl-report.json
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: Discovery - Neue Karten suchen
+        id: discover
+        run: npm run discover -- --json > discover-report.json
+
+      - name: Issue erstellen bei Änderungen
+        if: steps.crawl.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const crawl = fs.readFileSync('crawl-report.json', 'utf-8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔄 Karten-Updates erkannt (${new Date().toLocaleDateString('de-DE')})`,
+              body: `## Crawl-Bericht\n\`\`\`json\n${crawl}\n\`\`\``,
+              labels: ['karten-update']
+            });

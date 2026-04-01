@@ -8,13 +8,18 @@ export interface Database {
           name: string;
           beschreibung: string;
           autor: string;
+          version: string;
           groesse: string;
+          preview_url: string | null;
           minimap_url: string | null;
           screenshots: string[];
           fruechte: string[];
           produktionen: Record<string, unknown>[];
           pois: Record<string, unknown>[];
           download_url: string | null;
+          quell_url: string | null;
+          precision_farming: boolean;
+          fakten: Record<string, unknown>;
           erstellt_am: string;
           aktualisiert_am: string;
         };
@@ -38,9 +43,23 @@ export interface Database {
           id: string;
           username: string;
           avatar_url: string | null;
+          rolle: "user" | "moderator" | "admin";
         };
         Insert: Database["public"]["Tables"]["profile"]["Row"];
         Update: Partial<Database["public"]["Tables"]["profile"]["Row"]>;
+      };
+      audit_log: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          aktion: string;
+          ziel_typ: string;
+          ziel_id: string | null;
+          details: Record<string, unknown>;
+          erstellt_am: string;
+        };
+        Insert: Omit<Database["public"]["Tables"]["audit_log"]["Row"], "id" | "erstellt_am">;
+        Update: Partial<Database["public"]["Tables"]["audit_log"]["Insert"]>;
       };
     };
   };

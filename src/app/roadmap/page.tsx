@@ -46,20 +46,20 @@ const ROADMAP: RoadmapPhase[] = [
     zeitraum: "Q1 2026",
     features: [
       {
-        name: "Kartenuebersicht",
+        name: "Kartenübersicht",
         beschreibung: "Grid-Ansicht aller Karten mit Vorschau-Cards",
         status: "fertig",
         icon: Map,
       },
       {
         name: "Such- und Filtersystem",
-        beschreibung: "Karten nach Groesse, Fruechten und Name durchsuchen",
+        beschreibung: "Karten nach Größe, Früchten und Name durchsuchen",
         status: "fertig",
         icon: Search,
       },
       {
         name: "Karten-Detailseiten",
-        beschreibung: "Vollstaendige Infos zu Fruechten, Produktionen und POIs",
+        beschreibung: "Vollständige Infos zu Früchten, Produktionen und POIs",
         status: "fertig",
         icon: BarChart3,
       },
@@ -71,7 +71,7 @@ const ROADMAP: RoadmapPhase[] = [
       },
       {
         name: "Bewertungssystem",
-        beschreibung: "5-Sterne-Rating mit Kommentaren fuer jede Karte",
+        beschreibung: "5-Sterne-Rating mit Kommentaren für jede Karte",
         status: "fertig",
         icon: Star,
       },
@@ -84,62 +84,108 @@ const ROADMAP: RoadmapPhase[] = [
     ],
   },
   {
-    phase: "Phase 2",
-    titel: "Community & Inhalte",
-    zeitraum: "Q2 2026",
+    phase: "Phase 1.5",
+    titel: "Karten-Details & Daten",
+    zeitraum: "Q1 2026",
     features: [
       {
-        name: "Karten einreichen",
-        beschreibung: "Formular zum Vorschlagen neuer Karten durch die Community",
-        status: "in-arbeit",
+        name: "Map-Versionierung",
+        beschreibung: "Versionsnummern auf Karten-Cards und Detailseiten anzeigen",
+        status: "fertig",
+        icon: BarChart3,
+      },
+      {
+        name: "Fakten-Sheet",
+        beschreibung: "Felder, Hoefe, Waelder, Produktionen, Verkaufsstellen, BGA und Besonderheiten",
+        status: "fertig",
+        icon: BarChart3,
+      },
+      {
+        name: "Frucht-Icons",
+        beschreibung: "Originale LS25-HUD-Icons für alle Zusatzfruechte aus Mod-Dateien",
+        status: "fertig",
+        icon: Zap,
+      },
+      {
+        name: "Precision Farming Badge",
+        beschreibung: "Precision Farming Ready/Nicht unterstützt Status auf jeder Karte",
+        status: "fertig",
+        icon: Shield,
+      },
+      {
+        name: "Mod-Daten Import",
+        beschreibung: "Automatischer Import von Früchten, Produktionen und Minimap aus LS25-Mod-Dateien",
+        status: "fertig",
         icon: Upload,
       },
       {
-        name: "Benutzerprofile",
-        beschreibung: "Oeffentliche Profile mit Bewertungshistorie und Favoriten",
-        status: "in-arbeit",
-        icon: Users,
-      },
-      {
-        name: "Kommentar-System",
-        beschreibung: "Diskussionen und Tipps unter jeder Karte",
-        status: "geplant",
-        icon: MessageSquare,
-      },
-      {
-        name: "Benachrichtigungen",
-        beschreibung: "E-Mail-Benachrichtigungen bei neuen Karten und Antworten",
-        status: "geplant",
-        icon: Bell,
+        name: "Download-Links",
+        beschreibung: "Direkte Links zu Mod-Download-Quellen (forbidden-mods.de etc.)",
+        status: "fertig",
+        icon: Globe,
       },
     ],
   },
   {
+    phase: "Phase 2",
+    titel: "Automatisierung & Daten",
+    zeitraum: "Q1 2026",
+    features: [
+      { name: "Map Data Agent", beschreibung: "Automatischer Import von Karten aus Mod-Dateien", status: "fertig", icon: Upload },
+      { name: "Supabase Integration", beschreibung: "Alle Kartendaten aus PostgreSQL DB mit Fallback", status: "fertig", icon: Globe },
+      { name: "Batch-Crawl & Enricher", beschreibung: "Update-Checks und ModHub-URL-Ergänzung", status: "fertig", icon: Search },
+      { name: "GitHub Actions CI/CD", beschreibung: "Wöchentliche Crawl-Checks, Agent-Run, Auto-Deploy", status: "fertig", icon: Zap },
+      { name: "199 HUD-Icons", beschreibung: "Echte LS25-Frucht-Icons aus Mod-Dateien, deutsch übersetzt", status: "fertig", icon: Star },
+    ],
+  },
+  {
+    phase: "Phase 2.5",
+    titel: "Admin-CMS",
+    zeitraum: "Q2 2026",
+    features: [
+      { name: "Admin Dashboard", beschreibung: "Statistiken, Quick Actions und Aktivitäts-Feed", status: "fertig", icon: BarChart3 },
+      { name: "Karten-Editor", beschreibung: "Karten bearbeiten, erstellen und löschen", status: "fertig", icon: Map },
+      { name: "Benutzer-Verwaltung", beschreibung: "Rollen-System (Admin/Moderator/User)", status: "fertig", icon: Users },
+      { name: "Bewertungs-Moderation", beschreibung: "Unangemessene Bewertungen löschen", status: "fertig", icon: Shield },
+      { name: "Audit-Log", beschreibung: "Alle Admin-Aktionen protokolliert", status: "fertig", icon: Search },
+    ],
+  },
+  {
     phase: "Phase 3",
+    titel: "Community",
+    zeitraum: "Q2 2026",
+    features: [
+      { name: "Benutzerprofile", beschreibung: "Öffentliche Profile mit Bewertungshistorie", status: "geplant", icon: Users },
+      { name: "Kommentar-System", beschreibung: "Diskussionen und Tipps unter jeder Karte", status: "geplant", icon: MessageSquare },
+      { name: "Benachrichtigungen", beschreibung: "E-Mail-Benachrichtigungen bei neuen Karten", status: "geplant", icon: Bell },
+    ],
+  },
+  {
+    phase: "Phase 4",
     titel: "Erweiterte Features",
     zeitraum: "Q3 2026",
     features: [
       {
         name: "Kartenvergleich",
-        beschreibung: "Zwei Karten nebeneinander vergleichen (Fruechte, Groesse, etc.)",
+        beschreibung: "Zwei Karten nebeneinander vergleichen (Früchte, Größe, etc.)",
         status: "geplant",
         icon: BarChart3,
       },
       {
         name: "Dark Mode",
-        beschreibung: "Optionaler dunkler Modus fuer Nacht-Sessions",
+        beschreibung: "Optionaler dunkler Modus für Nacht-Sessions",
         status: "geplant",
         icon: Palette,
       },
       {
         name: "Performance-Optimierung",
-        beschreibung: "ISR, Bildoptimierung und Lazy Loading fuer schnellere Ladezeiten",
+        beschreibung: "ISR, Bildoptimierung und Lazy Loading für schnellere Ladezeiten",
         status: "geplant",
         icon: Zap,
       },
       {
-        name: "API fuer Modder",
-        beschreibung: "Oeffentliche API zum Abrufen von Kartendaten",
+        name: "API für Modder",
+        beschreibung: "Öffentliche API zum Abrufen von Kartendaten",
         status: "geplant",
         icon: Rocket,
       },
@@ -190,7 +236,7 @@ export default function RoadmapPage() {
             <h1 className="text-3xl font-bold text-green-900">Features & Roadmap</h1>
           </div>
           <p className="text-gray-500 mb-6">
-            Aktuelle Features und geplante Erweiterungen fuer LS-Karten.de
+            Aktuelle Features und geplante Erweiterungen für LS-Karten.de
           </p>
 
           {/* Progress Bar */}
