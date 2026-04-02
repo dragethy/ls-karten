@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Sky gradient -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="40%" stop-color="#B0DCF0"/>
+      <stop offset="70%" stop-color="#D4ECFA"/>
+      <stop offset="100%" stop-color="#E8F4D6"/>
+    </linearGradient>
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="75%" cy="25%" r="25%">
+      <stop offset="0%" stop-color="#FFF8E1" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#FFE082" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FFE082" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Wheat field gradient -->
+    <linearGradient id="wheat1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C8A951"/>
+      <stop offset="30%" stop-color="#D4B85C"/>
+      <stop offset="60%" stop-color="#BFA044"/>
+      <stop offset="100%" stop-color="#C8A951"/>
+    </linearGradient>
+    <linearGradient id="wheat2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D4B85C"/>
+      <stop offset="50%" stop-color="#C19A3E"/>
+      <stop offset="100%" stop-color="#D4B85C"/>
+    </linearGradient>
+    <!-- Green field gradients -->
+    <linearGradient id="greenField1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5A8C32"/>
+      <stop offset="100%" stop-color="#4A7A28"/>
+    </linearGradient>
+    <linearGradient id="greenField2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6B9E3C"/>
+      <stop offset="100%" stop-color="#5A8C32"/>
+    </linearGradient>
+    <linearGradient id="darkGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3D6B1E"/>
+      <stop offset="100%" stop-color="#2D5A14"/>
+    </linearGradient>
+    <!-- Haze -->
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4ECFA" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#D4ECFA" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="800" fill="url(#sky)"/>
+
+  <!-- Sun glow -->
+  <rect width="1920" height="800" fill="url(#sunGlow)"/>
+
+  <!-- Clouds -->
+  <g opacity="0.5">
+    <ellipse cx="300" cy="120" rx="120" ry="35" fill="white"/>
+    <ellipse cx="350" cy="110" rx="90" ry="40" fill="white"/>
+    <ellipse cx="250" cy="115" rx="80" ry="30" fill="white"/>
+
+    <ellipse cx="900" cy="80" rx="100" ry="30" fill="white"/>
+    <ellipse cx="940" cy="70" rx="70" ry="35" fill="white"/>
+
+    <ellipse cx="1500" cy="130" rx="130" ry="35" fill="white"/>
+    <ellipse cx="1560" cy="120" rx="90" ry="40" fill="white"/>
+    <ellipse cx="1440" cy="125" rx="80" ry="30" fill="white"/>
+  </g>
+
+  <!-- Far hills (horizon) -->
+  <path d="M0,420 Q200,380 400,400 Q600,370 800,395 Q1000,360 1200,390 Q1400,370 1600,385 Q1800,375 1920,395 L1920,500 L0,500 Z" fill="#7BA856" opacity="0.5"/>
+
+  <!-- Atmospheric haze -->
+  <rect x="0" y="350" width="1920" height="100" fill="url(#haze)"/>
+
+  <!-- Tree line (distant) -->
+  <g fill="#4A7A28" opacity="0.6">
+    <ellipse cx="100" cy="410" rx="30" ry="25"/>
+    <ellipse cx="140" cy="405" rx="25" ry="30"/>
+    <ellipse cx="170" cy="410" rx="20" ry="22"/>
+
+    <ellipse cx="500" cy="400" rx="35" ry="28"/>
+    <ellipse cx="540" cy="395" rx="28" ry="32"/>
+    <ellipse cx="580" cy="400" rx="25" ry="25"/>
+    <ellipse cx="610" cy="403" rx="20" ry="22"/>
+
+    <ellipse cx="1100" cy="398" rx="30" ry="30"/>
+    <ellipse cx="1140" cy="393" rx="25" ry="35"/>
+    <ellipse cx="1175" cy="400" rx="28" ry="25"/>
+
+    <ellipse cx="1600" cy="395" rx="35" ry="30"/>
+    <ellipse cx="1640" cy="390" rx="28" ry="35"/>
+    <ellipse cx="1680" cy="397" rx="25" ry="25"/>
+    <ellipse cx="1710" cy="400" rx="20" ry="22"/>
+  </g>
+
+  <!-- Middle green field -->
+  <path d="M0,430 Q300,415 600,425 Q900,410 1200,420 Q1500,412 1920,425 L1920,520 L0,520 Z" fill="url(#greenField2)"/>
+
+  <!-- Wheat field rows (left) -->
+  <path d="M0,500 Q200,485 500,495 Q700,480 1920,490 L1920,600 L0,600 Z" fill="url(#wheat1)"/>
+
+  <!-- Field texture lines -->
+  <g stroke="#B89840" stroke-width="0.8" opacity="0.3">
+    <path d="M0,510 Q480,495 960,505 Q1440,495 1920,503" fill="none"/>
+    <path d="M0,525 Q480,510 960,520 Q1440,510 1920,518" fill="none"/>
+    <path d="M0,540 Q480,525 960,535 Q1440,525 1920,533" fill="none"/>
+    <path d="M0,555 Q480,540 960,550 Q1440,540 1920,548" fill="none"/>
+    <path d="M0,570 Q480,555 960,565 Q1440,555 1920,563" fill="none"/>
+    <path d="M0,585 Q480,570 960,580 Q1440,570 1920,578" fill="none"/>
+  </g>
+
+  <!-- Darker wheat in front -->
+  <path d="M0,580 Q300,570 600,575 Q900,565 1200,572 Q1500,562 1920,570 L1920,650 L0,650 Z" fill="url(#wheat2)"/>
+
+  <!-- More field lines -->
+  <g stroke="#A88A35" stroke-width="1" opacity="0.25">
+    <path d="M0,590 Q480,580 960,586 Q1440,578 1920,584" fill="none"/>
+    <path d="M0,605 Q480,595 960,601 Q1440,593 1920,599" fill="none"/>
+    <path d="M0,620 Q480,610 960,616 Q1440,608 1920,614" fill="none"/>
+    <path d="M0,635 Q480,625 960,631 Q1440,623 1920,629" fill="none"/>
+  </g>
+
+  <!-- Green strip (grass path) -->
+  <path d="M0,650 Q480,645 960,648 Q1440,643 1920,646 L1920,670 L0,670 Z" fill="#5A8C32"/>
+
+  <!-- Foreground dark green -->
+  <path d="M0,665 Q480,660 960,663 Q1440,658 1920,661 L1920,800 L0,800 Z" fill="url(#darkGreen)"/>
+
+  <!-- Foreground wheat stubble -->
+  <g stroke="#8B7E3A" stroke-width="1.5" opacity="0.15">
+    <path d="M0,680 Q480,673 960,677 Q1440,671 1920,675" fill="none"/>
+    <path d="M0,700 Q480,693 960,697 Q1440,691 1920,695" fill="none"/>
+    <path d="M0,720 Q480,713 960,717 Q1440,711 1920,715" fill="none"/>
+    <path d="M0,740 Q480,733 960,737 Q1440,731 1920,735" fill="none"/>
+    <path d="M0,760 Q480,753 960,757 Q1440,751 1920,755" fill="none"/>
+    <path d="M0,780 Q480,773 960,777 Q1440,771 1920,775" fill="none"/>
+  </g>
+
+  <!-- Barn/shed silhouette (right) -->
+  <g transform="translate(1550, 380)">
+    <rect x="0" y="15" width="50" height="35" fill="#6B4226" opacity="0.5"/>
+    <polygon points="0,15 25,-5 50,15" fill="#8B5A3A" opacity="0.5"/>
+  </g>
+
+  <!-- Silo silhouette -->
+  <g transform="translate(1610, 370)">
+    <rect x="0" y="15" width="15" height="40" fill="#5A3A1E" opacity="0.45"/>
+    <ellipse cx="7.5" cy="15" rx="7.5" ry="4" fill="#6B4226" opacity="0.45"/>
+  </g>
+
+  <!-- Single tree (left accent) -->
+  <g transform="translate(250, 420)">
+    <rect x="8" y="15" width="5" height="20" fill="#5A3A1E" opacity="0.4"/>
+    <ellipse cx="10" cy="8" rx="18" ry="20" fill="#3D6B1E" opacity="0.55"/>
+  </g>
+
+  <!-- Single tree (right) -->
+  <g transform="translate(1350, 410)">
+    <rect x="8" y="18" width="5" height="22" fill="#5A3A1E" opacity="0.4"/>
+    <ellipse cx="10" cy="10" rx="16" ry="22" fill="#4A7A28" opacity="0.5"/>
+  </g>
+
+  <!-- Wheat stalks detail (foreground) -->
+  <g stroke="#C8A951" stroke-width="1.5" opacity="0.3" fill="none">
+    <path d="M100,650 Q105,620 100,600"/>
+    <path d="M120,650 Q125,615 122,590"/>
+    <path d="M400,648 Q405,618 402,598"/>
+    <path d="M420,648 Q418,612 422,588"/>
+    <path d="M700,649 Q705,619 702,599"/>
+    <path d="M730,649 Q728,613 732,589"/>
+    <path d="M1000,648 Q1005,618 1002,598"/>
+    <path d="M1020,649 Q1018,613 1022,589"/>
+    <path d="M1300,647 Q1305,617 1302,597"/>
+    <path d="M1320,648 Q1318,612 1322,588"/>
+    <path d="M1700,646 Q1705,616 1702,596"/>
+    <path d="M1720,647 Q1718,611 1722,587"/>
+  </g>
+</svg>

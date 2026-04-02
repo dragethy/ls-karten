@@ -12,6 +12,7 @@ const STANDARD_FRUECHTE = new Set([
   "grass", "oilseedradish", "oilseed radish", "meadow", "meadowus",
   "strawberry", "straw berry",
   "meadow a s", "meadowas", "meadow us", "meadowus",
+  "meadow e u", "meadoweu",
   // Deutsche Namen
   "weizen", "gerste", "hafer", "raps", "mais", "sonnenblumen", "sojabohnen",
   "kartoffeln", "zuckerrüben", "zuckerrueben", "zuckerrohr", "baumwolle",

@@ -69,7 +69,7 @@ async function main() {
 
   if (structure.overviewDds) {
     const out = path.join(outputDir, "minimap.png");
-    if (convertDDS(structure.overviewDds, out, "PNG")) minimapPath = out;
+    if (convertDDS(structure.overviewDds, out, "PNG", true)) minimapPath = out;
   }
 
   if (structure.previewDds) {

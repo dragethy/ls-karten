@@ -9,6 +9,7 @@ export interface ModStructure {
   previewDds: string | null;
   hudsDir: string | null;
   mapSize: number; // 1024, 2048, 4096, etc.
+  overviewSize: number; // Pixel-Größe der overview.dds (4096, 8192, etc.)
 }
 
 export interface ParsedModDesc {

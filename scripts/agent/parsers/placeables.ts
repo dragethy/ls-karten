@@ -9,7 +9,7 @@ interface PlaceablesResult {
   pois: ParsedPOI[];
 }
 
-export function parsePlaceables(filePath: string, modRoot: string, mapSize: number): PlaceablesResult {
+export function parsePlaceables(filePath: string, modRoot: string, mapSize: number, overviewSize?: number): PlaceablesResult {
   if (!existsSync(filePath)) return { produktionen: [], verkaufsstellen: [], pois: [] };
 
   const xml = readFileSync(filePath, "utf-8");
@@ -22,6 +22,10 @@ export function parsePlaceables(filePath: string, modRoot: string, mapSize: numb
   const produktionen: ParsedProduction[] = [];
   const verkaufsstellen: ParsedSellingStation[] = [];
   const pois: ParsedPOI[] = [];
+  // POIs normalisieren: mapSize bestimmt den Koordinatenbereich
+  // Die Minimap zeigt overviewSize/2 Pixel von der Mitte
+  // Bei ratio=1 (overview=mapSize): POIs am Rand können außerhalb des Crops liegen
+  // Bei ratio=2 (overview=2*mapSize): Crop = mapSize, alles passt
   const halfSize = mapSize / 2;
 
   let prodCount = 0;
@@ -31,8 +35,11 @@ export function parsePlaceables(filePath: string, modRoot: string, mapSize: numb
     const filename = (entry?.["@_filename"] || "").replace("$mapdir$", modRoot).replace(/\\/g, "/");
     const position = entry?.["@_position"] || "0 0 0";
     const [wx, , wz] = position.split(" ").map(Number);
-    const normX = Math.round(((wx + halfSize) / mapSize) * 100);
-    const normY = Math.round(((wz + halfSize) / mapSize) * 100);
+    let normX = Math.round(((wx + halfSize) / mapSize) * 100);
+    let normY = Math.round(((wz + halfSize) / mapSize) * 100);
+    // POIs außerhalb des Kartenbereichs auf den Rand clampen
+    normX = Math.max(2, Math.min(98, normX));
+    normY = Math.max(2, Math.min(98, normY));
 
     // Versuche die Placeable-XML zu lesen
     const resolvedPath = path.resolve(filename);

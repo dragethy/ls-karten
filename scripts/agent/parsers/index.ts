@@ -38,8 +38,10 @@ export function parseAll(structure: ModStructure, slug: string): AgentResult {
   const placeablesPath = structure.placeablesPath || (modDesc.defaultPlaceablesFile
     ? path.resolve(structure.root, modDesc.defaultPlaceablesFile)
     : null);
+  const effectiveMapSize = structure.mapSize || mapConfig.mapSize;
+  const overviewSize = structure.overviewSize || effectiveMapSize * 2;
   const { produktionen, verkaufsstellen, pois } = placeablesPath
-    ? parsePlaceables(placeablesPath, structure.root, structure.mapSize || mapConfig.mapSize)
+    ? parsePlaceables(placeablesPath, structure.root, effectiveMapSize, overviewSize)
     : { produktionen: [], verkaufsstellen: [], pois: [] };
 
   console.log("  Prüfe Precision Farming...");

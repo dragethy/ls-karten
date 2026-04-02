@@ -71,7 +71,7 @@ export function KartenDetailClient({ karte }: KartenDetailClientProps) {
       >
         {/* Preview Banner */}
         {karte.preview_url && (
-          <div className="relative h-48 sm:h-64 lg:h-80 rounded-xl overflow-hidden mb-8">
+          <div className="relative h-48 sm:h-64 lg:h-80 rounded-xl overflow-hidden mb-8 shadow-lg">
             <Image
               src={karte.preview_url}
               alt={karte.name}
@@ -79,11 +79,27 @@ export function KartenDetailClient({ karte }: KartenDetailClientProps) {
               className="object-cover object-bottom"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-5">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            <div className="absolute top-4 right-4 flex gap-2">
+              <Badge className="bg-green-600/90 text-white backdrop-blur-sm border-green-500 text-xs shadow">
+                v{karte.version}
+              </Badge>
+              <Badge className="bg-white/90 text-gray-700 backdrop-blur-sm border-white/50 text-xs shadow">
+                {karte.groesse}
+              </Badge>
+              {karte.precision_farming && (
+                <Badge className="bg-blue-500/90 text-white backdrop-blur-sm border-blue-400 text-xs shadow">
+                  PF Ready
+                </Badge>
+              )}
+            </div>
+            <div className="absolute bottom-4 left-5 right-5">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
                 {karte.name}
               </h1>
+              <p className="text-white/80 text-sm mt-1 drop-shadow">
+                von {karte.autor}
+              </p>
             </div>
           </div>
         )}
@@ -147,15 +163,16 @@ export function KartenDetailClient({ karte }: KartenDetailClientProps) {
           </div>
         </div>
 
-        {/* Description */}
-        <Card className="mb-8">
-          <CardContent className="p-6">
-            <p className="text-gray-700 leading-relaxed">{karte.beschreibung}</p>
-          </CardContent>
-        </Card>
+        {/* Description + Fakten in 2-Spalten-Layout auf Desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          <Card className="lg:col-span-2">
+            <CardContent className="p-6">
+              <h2 className="text-lg font-semibold text-green-900 mb-3">Beschreibung</h2>
+              <FormattedDescription text={karte.beschreibung} />
+            </CardContent>
+          </Card>
 
-        {/* Fakten Sheet */}
-        <Card className="mb-8">
+          <Card>
           <CardContent className="p-6">
             <FaktenSheet
               fakten={karte.fakten}
@@ -164,7 +181,8 @@ export function KartenDetailClient({ karte }: KartenDetailClientProps) {
               precision_farming={karte.precision_farming}
             />
           </CardContent>
-        </Card>
+          </Card>
+        </div>
 
         {/* Interactive Map */}
         <div className="mb-8 space-y-4">
@@ -196,4 +214,40 @@ export function KartenDetailClient({ karte }: KartenDetailClientProps) {
       </motion.div>
     </div>
   );
+}
+
+function FormattedDescription({ text }: { text: string }) {
+  if (!text) return null;
+
+  // Beschreibungen aus modDesc.xml verwenden oft • oder - als Aufzählungszeichen
+  const hasBullets = text.includes("•") || text.includes(" - ") || text.includes(" · ");
+
+  if (hasBullets) {
+    // Aufteilen: Erster Absatz vor dem ersten Bullet + Bullet-Liste
+    const parts = text.split(/\s*[•·]\s*/);
+    // Oder Bindestriche als Trenner (nur wenn sie nach Punkt+Leerzeichen kommen)
+    const altParts = parts.length <= 2 ? text.split(/\s+-\s+/) : parts;
+    const items = (altParts.length > 2 ? altParts : parts).filter((p) => p.trim().length > 3);
+
+    if (items.length > 2) {
+      const intro = items[0];
+      const bullets = items.slice(1);
+
+      return (
+        <div className="space-y-3">
+          {intro && <p className="text-gray-700 leading-relaxed">{intro.trim()}</p>}
+          <ul className="space-y-1.5">
+            {bullets.map((item, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-400 shrink-0" />
+                {item.trim()}
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+  }
+
+  return <p className="text-gray-700 leading-relaxed">{text}</p>;
 }

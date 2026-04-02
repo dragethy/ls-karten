@@ -161,6 +161,17 @@ const ROADMAP: RoadmapPhase[] = [
     ],
   },
   {
+    phase: "Phase 3.5",
+    titel: "Interaktive Karte & UI",
+    zeitraum: "Q2 2026",
+    features: [
+      { name: "Lucide SVG-Marker", beschreibung: "POI-Icons statt farbiger Punkte auf der Minimap", status: "fertig", icon: Map },
+      { name: "Minimap-Cropping", beschreibung: "MapSize-basierter Crop für alle Kartengrößen", status: "fertig", icon: Globe },
+      { name: "Legende mit Icons", beschreibung: "Passende Lucide-Icons in der Kartenlegende", status: "fertig", icon: Star },
+      { name: "Beschreibungs-Formatierung", beschreibung: "Aufzählungen statt Fließtext, 2-Spalten-Layout", status: "fertig", icon: BarChart3 },
+    ],
+  },
+  {
     phase: "Phase 4",
     titel: "Erweiterte Features",
     zeitraum: "Q3 2026",

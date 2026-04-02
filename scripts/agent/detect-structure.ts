@@ -1,7 +1,17 @@
 import { existsSync, readdirSync, statSync } from "fs";
+import { execSync } from "child_process";
 import path from "path";
 import { parseModDesc } from "./parsers/mod-desc.js";
 import type { ModStructure } from "./types.js";
+
+function getImageSize(ddsPath: string): number {
+  try {
+    const result = execSync(`python -c "from PIL import Image; print(Image.open(r'${ddsPath}').size[0])"`, { stdio: "pipe" });
+    return parseInt(result.toString().trim()) || 4096;
+  } catch {
+    return 4096;
+  }
+}
 
 function findFile(dir: string, patterns: string[]): string | null {
   try {
@@ -112,5 +122,6 @@ export function detectStructure(modRoot: string): ModStructure {
     previewDds,
     hudsDir,
     mapSize: 2048,
+    overviewSize: overviewDds ? getImageSize(overviewDds) : 4096,
   };
 }

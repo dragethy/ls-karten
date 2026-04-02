@@ -14,6 +14,23 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "0.6.0",
+    datum: "02.04.2026",
+    typ: "verbesserung",
+    aenderungen: [
+      "Interaktive Karte: Lucide SVG-Icons statt farbiger Punkte (Haus, Store, Fabrik, etc.)",
+      "Minimap-Cropping: mapSize-basierter Crop für korrekte Darstellung aller Kartengrößen",
+      "POI-Normalisierung: Korrekte Positionierung basierend auf Overview/Map-Ratio",
+      "Legende der Interaktiven Karte mit passenden Lucide-Icons",
+      "Beschreibungen: Automatische Formatierung mit Aufzählungen statt Fließtext",
+      "Detailseite: 2-Spalten-Layout (Beschreibung + Fakten), Preview-Banner mit Badges",
+      "199 echte HUD-Icons aus 6 Mod-Dateien extrahiert",
+      "Alle 11 Minimaps korrekt gecroppt und in Supabase hochgeladen",
+      "Alle Meadow-Varianten als Standard-Früchte gefiltert",
+      "4 Demo-Maps entfernt, nur noch echte Karten in der DB",
+    ],
+  },
+  {
     version: "0.5.0",
     datum: "01.04.2026",
     typ: "feature",
