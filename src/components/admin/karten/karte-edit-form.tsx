@@ -105,7 +105,7 @@ export function KarteEditForm({ karte }: KarteEditFormProps) {
                 value={form.groesse}
                 onChange={(e) => setForm({ ...form, groesse: e.target.value as Karte["groesse"] })}
               >
-                {["1x", "2x", "4x", "8x", "16x"].map((s) => (
+                {["2x", "4x", "16x", "64x"].map((s) => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>

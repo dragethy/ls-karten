@@ -18,8 +18,16 @@ export interface Karte {
   aktualisiert_am: string;
   precision_farming: boolean;
   fakten: MapFakten;
+  changelog?: KartenChangelog[];
   durchschnitt_bewertung?: number;
   anzahl_bewertungen?: number;
+}
+
+export interface KartenChangelog {
+  version: string;
+  datum: string;
+  downloads?: number;
+  aenderungen: string[];
 }
 
 export interface MapFakten {
@@ -34,7 +42,7 @@ export interface MapFakten {
   besonderheiten?: string[];
 }
 
-export type MapGroesse = "1x" | "2x" | "4x" | "8x" | "16x";
+export type MapGroesse = "2x" | "4x" | "16x" | "64x";
 
 export interface Produktion {
   name: string;

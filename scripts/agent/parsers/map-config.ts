@@ -11,11 +11,10 @@ interface MapConfigResult {
 }
 
 const SIZE_MAP: Record<number, string> = {
-  1024: "1x",
   2048: "2x",
   4096: "4x",
-  8192: "8x",
-  16384: "16x",
+  8192: "16x",
+  16384: "64x",
 };
 
 export function parseMapConfig(filePath: string): MapConfigResult {

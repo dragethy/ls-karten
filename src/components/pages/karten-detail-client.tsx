@@ -155,9 +155,32 @@ export function KartenDetailClient({ karte }: Props) {
                   </div>
                 )}
                 {activeTab === "changelog" && (
-                  <div className="text-gray-500 text-sm">
+                  <div>
                     <h2 className="text-2xl font-bold tracking-tight text-green-950 mb-4">Changelog</h2>
-                    <p>Changelog wird automatisch bei Versions-Updates erfasst. Aktuell: v{karte.version}</p>
+                    {karte.changelog && karte.changelog.length > 0 ? (
+                      <div className="border-l-2 border-green-200 pl-5 space-y-5">
+                        {karte.changelog.map((entry, i) => (
+                          <div key={entry.version} className="relative">
+                            <span className={`absolute -left-[25px] top-1.5 h-3 w-3 rounded-full ${i === 0 ? "bg-green-500" : "bg-gray-300"}`} />
+                            <div className="flex items-center gap-3 mb-1">
+                              <span className="text-sm font-bold text-green-950">v{entry.version}</span>
+                              {entry.datum && <span className="text-xs text-gray-400">{entry.datum}</span>}
+                              {entry.downloads !== undefined && <span className="text-xs text-gray-400">· {entry.downloads} Downloads</span>}
+                            </div>
+                            <ul className="space-y-1">
+                              {entry.aenderungen.map((a, j) => (
+                                <li key={j} className="text-sm text-gray-600 flex items-start gap-2">
+                                  <span className="mt-1.5 h-1 w-1 rounded-full bg-gray-400 shrink-0" />
+                                  {a}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500">Noch kein Changelog verfügbar. Aktuell: v{karte.version}</p>
+                    )}
                   </div>
                 )}
                 {activeTab === "galerie" && (

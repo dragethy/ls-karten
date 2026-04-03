@@ -23,6 +23,7 @@ function mapDbRowToKarte(row: Record<string, unknown>): Karte {
     aktualisiert_am: String(row.aktualisiert_am),
     precision_farming: Boolean(row.precision_farming),
     fakten: (row.fakten as Karte["fakten"]) || {},
+    changelog: (row.changelog as Karte["changelog"]) || [],
     durchschnitt_bewertung: row.durchschnitt_bewertung as number | undefined,
     anzahl_bewertungen: row.anzahl_bewertungen as number | undefined,
   };

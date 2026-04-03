@@ -12,7 +12,8 @@
     "agent": "tsx scripts/agent/index.ts",
     "discover": "tsx scripts/discover/index.ts",
     "discover:json": "tsx scripts/discover/index.ts --json",
-    "enrich": "tsx scripts/enrich/index.ts"
+    "enrich": "tsx scripts/enrich/index.ts",
+    "crawl-changelog": "tsx scripts/crawl-changelog/index.ts"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",

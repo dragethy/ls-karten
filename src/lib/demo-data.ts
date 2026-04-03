@@ -211,7 +211,7 @@ export const DEMO_KARTEN: Karte[] = [
       "Eine riesige norddeutsche Marschlandschaft mit weitläufigen Feldern und authentischem Flair. Ideal für Großbetriebe.",
     autor: "NordModding",
     version: "1.0.0",
-    groesse: "8x",
+    groesse: "16x",
     precision_farming: true,
     preview_url: null,
     minimap_url: null,
