@@ -213,14 +213,14 @@ export function FruechteListe({ fruechte }: FruechteListeProps) {
         <Wheat className="h-5 w-5 text-green-600" />
         Zusätzliche Früchte ({zusatzFruechte.length})
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-2">
         {zusatzFruechte.map((frucht) => {
           const displayName = getDisplayName(frucht);
           const iconPath = getIconPath(frucht);
           return (
             <div
               key={frucht}
-              className="flex items-center gap-2.5 rounded-lg border border-green-200 bg-white p-2.5 shadow-sm hover:border-green-400 hover:shadow-md transition-all duration-200"
+              className="flex items-center gap-2 rounded-lg border border-green-200 bg-white p-2 shadow-sm hover:border-green-400 hover:shadow-md transition-all duration-200 overflow-hidden"
             >
               {iconPath ? (
                 <Image
@@ -236,7 +236,7 @@ export function FruechteListe({ fruechte }: FruechteListeProps) {
                   <Wheat className="h-4 w-4 text-green-500" />
                 </div>
               )}
-              <span className="text-sm font-medium text-green-900">{displayName}</span>
+              <span className="text-sm font-medium text-green-900 truncate">{displayName}</span>
             </div>
           );
         })}

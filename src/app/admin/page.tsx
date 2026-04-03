@@ -75,11 +75,11 @@ function StatCard({ icon: Icon, label, value, sub, color }: {
   return (
     <Card>
       <CardContent className="p-4 flex items-start gap-3">
-        <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${color} shrink-0`}>
+        <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${color} shrink-0 shadow-sm`}>
           <Icon className="h-5 w-5" />
         </div>
         <div>
-          <p className="text-2xl font-bold text-gray-900">{value}</p>
+          <p className="text-2xl font-black text-green-950">{value}</p>
           <p className="text-sm text-gray-500">{label}</p>
           {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
         </div>

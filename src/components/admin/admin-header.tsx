@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/use-auth";
 import { useAdmin } from "@/hooks/use-admin";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { LogOut, Shield, User } from "lucide-react";
 
@@ -30,8 +29,8 @@ export function AdminHeader() {
   const { rolle } = useAdmin();
 
   return (
-    <header className="flex items-center justify-between px-6 py-3 border-b border-gray-200 bg-white">
-      <h1 className="text-lg font-semibold text-gray-900">
+    <header className="flex items-center justify-between px-6 py-3 border-b border-green-200/40 bg-white/80 backdrop-blur-xl">
+      <h1 className="text-lg font-black text-green-950">
         {getPageTitle(pathname)}
       </h1>
 
@@ -41,14 +40,14 @@ export function AdminHeader() {
             <User className="h-4 w-4 text-green-600" />
           </div>
           <div className="text-sm">
-            <span className="font-medium text-gray-700">{user?.email?.split("@")[0]}</span>
-            <Badge className="ml-2 bg-green-100 text-green-700 border-green-200 text-xs">
-              <Shield className="h-3 w-3 mr-1" />
+            <span className="font-medium text-green-950">{user?.email?.split("@")[0]}</span>
+            <span className="ml-2 inline-flex items-center rounded-full bg-green-600 text-white px-2 py-0.5 text-[10px] font-bold">
+              <Shield className="h-2.5 w-2.5 mr-1" />
               {rolle}
-            </Badge>
+            </span>
           </div>
         </div>
-        <Button variant="ghost" size="sm" onClick={signOut}>
+        <Button variant="ghost" size="sm" onClick={signOut} className="text-gray-400 hover:text-red-500">
           <LogOut className="h-4 w-4" />
         </Button>
       </div>

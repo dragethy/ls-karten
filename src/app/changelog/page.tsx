@@ -14,6 +14,21 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "0.7.0",
+    datum: "03.04.2026",
+    typ: "verbesserung",
+    aenderungen: [
+      "Komplett neues Gaming-UI Design mit dezenter Glassmorphism-Ästhetik",
+      "Detailseite: Großer Preview-Header (30vh), Titel-Bar mit Backdrop-Blur",
+      "Detailseite: Tabs (Übersicht/Changelog/Galerie) + Schnellüberblick-Sidebar",
+      "Detailseite: Fakten + Zusatzfrüchte nebeneinander, Interaktive Karte volle Breite",
+      "Startseite: Dunkler Hero mit Glassmorphism-Stats und grünem Gradient-Text",
+      "Karten-Cards: Titel im Bild-Overlay, kompaktere Badges, Rating inline",
+      "Kartenübersicht: Neuer Header mit Icon-Badge",
+      "Durchgängig: bg-white/80 backdrop-blur-sm auf allen Cards",
+    ],
+  },
+  {
     version: "0.6.0",
     datum: "02.04.2026",
     typ: "verbesserung",
@@ -23,10 +38,8 @@ const CHANGELOG: ChangelogEntry[] = [
       "POI-Normalisierung: Korrekte Positionierung basierend auf Overview/Map-Ratio",
       "Legende der Interaktiven Karte mit passenden Lucide-Icons",
       "Beschreibungen: Automatische Formatierung mit Aufzählungen statt Fließtext",
-      "Detailseite: 2-Spalten-Layout (Beschreibung + Fakten), Preview-Banner mit Badges",
       "199 echte HUD-Icons aus 6 Mod-Dateien extrahiert",
       "Alle 11 Minimaps korrekt gecroppt und in Supabase hochgeladen",
-      "Alle Meadow-Varianten als Standard-Früchte gefiltert",
       "4 Demo-Maps entfernt, nur noch echte Karten in der DB",
     ],
   },

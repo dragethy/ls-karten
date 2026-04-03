@@ -18,6 +18,9 @@ import {
   Bell,
   Palette,
   Zap,
+  Heart,
+  HardDrive,
+  Building,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -200,6 +203,16 @@ const ROADMAP: RoadmapPhase[] = [
         status: "geplant",
         icon: Rocket,
       },
+    ],
+  },
+  {
+    phase: "Phase 5",
+    titel: "Spieler-Features",
+    zeitraum: "Q4 2026",
+    features: [
+      { name: "Favoriten", beschreibung: "Karten als Favorit markieren und in einer persönlichen Liste speichern", status: "geplant", icon: Heart },
+      { name: "Savegame Upload", beschreibung: "Eigenen Spielstand hochladen und Fortschritt auf der Karte visualisieren", status: "geplant", icon: HardDrive },
+      { name: "Eigene Gebäude als POIs", beschreibung: "Platzierte Gebäude aus dem Savegame als POIs auf der interaktiven Karte anzeigen", status: "geplant", icon: Building },
     ],
   },
 ];

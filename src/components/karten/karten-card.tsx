@@ -3,10 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { MapPin, Wheat, Factory, User } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { SternRating } from "@/components/bewertungen/stern-rating";
+import { MapPin, Wheat, Factory, User, Star } from "lucide-react";
 import type { Karte } from "@/types/karte";
 
 interface KartenCardProps {
@@ -22,9 +19,9 @@ export function KartenCard({ karte, index = 0 }: KartenCardProps) {
       transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <Link href={`/karten/${karte.slug}`}>
-        <Card className="group hover:border-green-400 hover:shadow-lg hover:shadow-green-100 cursor-pointer overflow-hidden">
-          {/* Map Preview */}
-          <div className="relative h-48 bg-gradient-to-br from-green-100 to-green-50 overflow-hidden">
+        <div className="group rounded-2xl border border-green-200/40 bg-white/80 backdrop-blur-sm overflow-hidden shadow-[0_4px_12px_rgba(16,24,40,0.04)] hover:shadow-[0_10px_30px_rgba(16,24,40,0.08)] hover:border-green-400/60 transition-all duration-300 cursor-pointer">
+          {/* Preview */}
+          <div className="relative h-44 bg-gradient-to-br from-green-100 to-green-50 overflow-hidden">
             {karte.preview_url ? (
               <Image
                 src={karte.preview_url}
@@ -35,82 +32,72 @@ export function KartenCard({ karte, index = 0 }: KartenCardProps) {
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
-                <MapPin className="h-16 w-16 text-green-300 group-hover:text-green-400 transition-colors" />
+                <MapPin className="h-14 w-14 text-green-300 group-hover:text-green-400 transition-colors" />
               </div>
             )}
-            <div className="absolute top-3 left-3">
-              <Badge className="bg-green-600/90 text-white backdrop-blur-sm shadow-sm text-xs border-green-600">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+            {/* Badges */}
+            <div className="absolute top-2.5 left-2.5">
+              <span className="rounded-full bg-green-500 px-2.5 py-0.5 text-[11px] font-bold text-white shadow">
                 v{karte.version}
-              </Badge>
+              </span>
             </div>
-            <div className="absolute top-3 right-3 flex gap-1.5">
-              <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm shadow-sm">
+            <div className="absolute top-2.5 right-2.5 flex gap-1.5">
+              <span className="rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-0.5 text-[11px] font-semibold text-white ring-1 ring-white/25">
                 {karte.groesse}
-              </Badge>
-              <Badge
-                className={`backdrop-blur-sm shadow-sm text-xs ${
-                  karte.precision_farming
-                    ? "bg-blue-500/90 text-white border-blue-500"
-                    : "bg-gray-400/80 text-white border-gray-400"
-                }`}
-              >
-                PF {karte.precision_farming ? "\u2713" : "\u2717"}
-              </Badge>
+              </span>
+              {karte.precision_farming && (
+                <span className="rounded-full bg-blue-500/80 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+                  PF
+                </span>
+              )}
             </div>
-            <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-white to-transparent" />
+
+            {/* Bottom overlay: Title */}
+            <div className="absolute bottom-2.5 left-3 right-3">
+              <h3 className="text-lg font-black text-white drop-shadow-lg truncate">{karte.name}</h3>
+            </div>
           </div>
 
-          <CardContent className="p-5 space-y-3">
-            {/* Title & Author */}
-            <div>
-              <h3 className="text-lg font-semibold text-green-900 group-hover:text-green-600 transition-colors">
-                {karte.name}
-              </h3>
-              <div className="flex items-center gap-1.5 mt-1 text-sm text-gray-500">
+          {/* Content */}
+          <div className="p-4 space-y-2.5">
+            {/* Author + Rating */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-sm text-gray-500">
                 <User className="h-3.5 w-3.5" />
-                <span>{karte.autor}</span>
+                <span className="truncate max-w-[140px]">{karte.autor}</span>
               </div>
-            </div>
-
-            {/* Rating */}
-            {karte.durchschnitt_bewertung !== undefined && (
-              <div className="flex items-center gap-2">
-                <SternRating wert={karte.durchschnitt_bewertung} groesse="sm" />
-                <span className="text-sm text-gray-500">
-                  ({karte.anzahl_bewertungen})
-                </span>
-              </div>
-            )}
-
-            {/* Stats */}
-            <div className="flex items-center gap-4 text-xs text-gray-500">
-              <div className="flex items-center gap-1">
-                <Wheat className="h-3.5 w-3.5 text-green-600" />
-                <span>{karte.fruechte.length} Zusatzfrüchte</span>
-              </div>
-              {karte.fakten?.produktionen && (
-                <div className="flex items-center gap-1">
-                  <Factory className="h-3.5 w-3.5 text-amber-600" />
-                  <span>{karte.fakten.produktionen} Produktionen</span>
+              {karte.durchschnitt_bewertung !== undefined && (
+                <div className="flex items-center gap-1 text-sm">
+                  <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                  <span className="font-bold text-green-950">{karte.durchschnitt_bewertung.toFixed(1)}</span>
                 </div>
               )}
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {karte.fruechte.slice(0, 4).map((frucht) => (
-                <Badge key={frucht} variant="outline" className="text-xs">
-                  {frucht}
-                </Badge>
-              ))}
-              {karte.fruechte.length > 4 && (
-                <Badge variant="outline" className="text-xs">
-                  +{karte.fruechte.length - 4}
-                </Badge>
+            {/* Stats */}
+            <div className="flex items-center gap-3 text-xs text-gray-500">
+              {karte.fakten?.felder && (
+                <span className="flex items-center gap-1">
+                  <span className="font-bold text-green-700">{(karte.fakten as Record<string, unknown>).felder as number}</span> Felder
+                </span>
+              )}
+              {karte.fruechte.length > 0 && (
+                <span className="flex items-center gap-1">
+                  <Wheat className="h-3 w-3 text-green-600" />
+                  {karte.fruechte.length} Früchte
+                </span>
+              )}
+              {karte.fakten?.produktionen && (
+                <span className="flex items-center gap-1">
+                  <Factory className="h-3 w-3 text-amber-600" />
+                  {(karte.fakten as Record<string, unknown>).produktionen as number}
+                </span>
               )}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </Link>
     </motion.div>
   );
